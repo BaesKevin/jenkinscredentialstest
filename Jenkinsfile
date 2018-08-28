@@ -5,6 +5,7 @@ pipeline{
 
     environment {
         MY_SECRET = credentials('dev_gcal_creds')
+        CONTENT = '${MY_SECRET}'
     }
 
     stages {
