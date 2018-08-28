@@ -9,7 +9,7 @@ node {
     stage('build') {
         withCredentials([file(credentialsId: 'dev_gcal_creds', variable: 'MY_SECRET_PATH')]) {
             PARENT_FOLDER = sh (
-                script: "echo ${MY_SECRET_PATH} | rev | cut -d'/' -f 1 | rev" ,
+                script: "echo ${MY_SECRET_PATH} | rev | cut -d'/' -f 2- | rev" ,
                 returnStdout: true
             ).trim()
             echo PARENT_FOLDER
