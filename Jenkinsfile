@@ -14,8 +14,8 @@ node {
             ).trim()
             echo PARENT_FOLDER
 
+            sh "cp $SECRET_PATH ./secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker cp $MY_SECRET_PATH secretfiletest:/app/secretfile.json"
             sh "docker run --rm --name secretfiletest secretfiletest"
         }        
     }
