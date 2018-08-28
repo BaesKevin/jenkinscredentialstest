@@ -8,13 +8,8 @@ node {
 
     stage('build') {
         withCredentials([file(credentialsId: 'dev_gcal_creds', variable: 'MY_SECRET_PATH')]) {
-            env.PARENT_FOLDER = sh(
-                script: "${MY_SECRET_PATH} | rev | cut -d'/' -f 2 | rev",
-                returnStdOut: true
-            )
-            echo "${PARENT_FOLDER}"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -e PARENT_PATH=${PARENT_FOLDER} -v ${PARENT_FOLDER}:/app/secrets secretfiletest"
+            sh "PARENT_FOLDER = echo ${MY_SECRET_PATH}  | rev | cut -d'/' -f 2 | rev && docker run --rm -e PARENT_PATH=${PARENT_FOLDER} -v ${PARENT_FOLDER}:/app/secrets secretfiletest"
         }        
     }
     
