@@ -1,5 +1,5 @@
 FROM node
 WORKDIR /app
 COPY . /app
-RUN pwd
+MKDIR secrets
 CMD ["node", "app.js"]
