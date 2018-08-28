@@ -3,5 +3,6 @@
 const http = require('http');
 const fs = require('fs');
 
-const secret = process.env.MY_SECRET;
-console.log('This is the secret: ' + secret);
+const file = fs.readFileSync(process.env.service_account_credentials.json);
+
+console.log('file contents: ' + file);

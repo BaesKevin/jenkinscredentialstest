@@ -4,7 +4,7 @@ pipeline{
     tools {nodejs "node"}
 
     environment {
-        MY_SECRET = credentials('meetingroomplanner_gcal_private_key_id')
+        MY_SECRET = credentials('service_account_credentials.json')
     }
 
     stages {
