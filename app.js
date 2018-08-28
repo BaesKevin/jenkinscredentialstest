@@ -3,6 +3,6 @@
 const http = require('http');
 const fs = require('fs');
 
-const file = fs.readFileSync(process.env.service_account_credentials.json);
+const file = fs.readFileSync(process.env.MY_SECRET_PATH);
 
 console.log('file contents: ' + file);

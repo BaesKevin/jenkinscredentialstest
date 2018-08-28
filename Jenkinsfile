@@ -4,7 +4,7 @@ pipeline{
     tools {nodejs "node"}
 
     environment {
-        MY_SECRET = credentials('service_account_credentials.json')
+        MY_SECRET_PATH = credentials('dev_gcal_creds')
     }
 
     stages {
