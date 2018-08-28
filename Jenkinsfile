@@ -7,7 +7,7 @@ node {
         withCredentials([file(credentialsId: 'dev_gcal_creds', variable: 'MY_SECRET_PATH')]) {
             def parts = "${MY_SECRET_PATH}".split('/');
             echo parts
-            def path = parts.split('/')[0]
+            def path = parts[0]
             echo path
             sh "docker build -f production_dockerfile -t secretfiletest ."
             sh "docker run -e PARENT_PATH=${path} -v ${MY_SECRET_PATH}:/app/secrets secretfiletest"
