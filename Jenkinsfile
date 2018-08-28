@@ -10,13 +10,8 @@ node {
     // def file = new File('${MY_SECRET_PATH}')
     // def parentPath = file.getParentFile().getName()
     // echo parentPath
-
-    stages {
-        stage('run') {
-            steps {
-                sh 'docker build -f production_dockerfile -t secretfiletest .'
-                sh 'docker run -v ${MY_SECRET_PATH}:/app/secrets secretfiletest'
-            }
-        }
+    stage('run') {
+        sh 'docker build -f production_dockerfile -t secretfiletest .'
+        sh 'docker run -v ${MY_SECRET_PATH}:/app/secrets secretfiletest'
     }
 }
