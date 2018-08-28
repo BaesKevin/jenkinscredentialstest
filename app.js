@@ -16,7 +16,7 @@ const path = require('path');
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
 
-fs.readdirSync('/app/secrets').forEach(file => {
+fs.readdirSync('/app/secretfile.json').forEach(file => {
     console.log('file: ', file);
 });
 
