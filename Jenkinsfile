@@ -12,7 +12,8 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'docker ps'
+                sh 'docker build -f production_dockerfile -t secretfiletest .'
+                sh 'docker run --rm -e MY_SECRET_PATH=${MY_SECRET_PATH} secretfiletest'
             }
         }
     }
