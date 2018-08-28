@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent { docker {image 'node:6.3'}}
 
     tools {nodejs "node"}
 
@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'npm config ls'
+                sh 'node app.js'
             }
         }
     }
