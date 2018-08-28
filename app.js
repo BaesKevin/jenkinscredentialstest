@@ -16,10 +16,11 @@ const path = require('path');
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
 
-fs.readdirSync('/app').forEach(file => {
+fs.readdirSync('/app/secrets').forEach(file => {
     console.log('file: ', file);
 });
-fs.readFile(`/app/secrets`, (err, data) => {
-    if (err) throw err;
-    console.log(data);
-  });
+
+// fs.readFile(`/app/secrets`, (err, data) => {
+//     if (err) throw err;
+//     console.log(data);
+//   });
