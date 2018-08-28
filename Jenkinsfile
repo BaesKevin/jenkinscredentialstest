@@ -5,8 +5,9 @@ node {
 
     stage('run') {
         withCredentials([file(credentialsId: 'dev_gcal_creds', variable: 'MY_SECRET_PATH')]) {
-            def file = new File('${MY_SECRET_PATH}')
-            def parentPath = file.getParentFile().getName()
+            def pathParts = "${MY_SECRET_PATH}')".split('/')
+            echo pathParts
+            def parentPath = pathParts[-1];
             echo parentPath
             sh "docker build -f production_dockerfile -t secretfiletest ."
             sh "docker run -v ${MY_SECRET_PATH}:/app/secrets secretfiletest"
