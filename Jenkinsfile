@@ -14,7 +14,7 @@ node {
             )
             echo "${PARENT_FOLDER}"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -e PARENT_PATH=${PARENT_FOLDER} -v ${PARENT_FOLDER}:/app/secrets secretfiletest"
+            sh "docker run --rm -e PARENT_PATH=$(echo ${MY_SECRET_PATH} | rev | cut -d'/' -f 2 | rev) -v ${PARENT_FOLDER}:/app/secrets secretfiletest"
         }        
     }
     
