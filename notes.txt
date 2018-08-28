@@ -1,0 +1,3 @@
+Jenkins setupd
+- install recommended plugins
+- install nodejs plugin
