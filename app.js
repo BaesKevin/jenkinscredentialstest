@@ -18,7 +18,7 @@ console.log(process.env.PARENT_PATH);
 
 fs.readFileSync('/app/secrets/service_account_-credentials.json')
 
-fs.readFile('/app/secrets/service_account_credentials.json', (err, data) => {
+fs.readFile(`${process.env.PARENT_PATH}/service_account_credentials.json`, (err, data) => {
     if (err) throw err;
     console.log(data);
   });
