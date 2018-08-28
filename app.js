@@ -6,8 +6,8 @@ const path = require('path');
 // const file = fs.readFileSync(process.env.MY_SECRET_PATH);
 
 // console.log(process.env.PARENT_PATH);
-console.log(__dirname);
-console.log(process.env);
+// console.log(__dirname);
+// console.log(process.env);
 console.log(process.env.PARENT_PATH);
 // console.log(process.env.MY_SECRET_PATH);
 
@@ -16,5 +16,5 @@ console.log(process.env.PARENT_PATH);
 // console.log(pathToSecretFile);
 
 fs.readdirSync('/app/secrets').forEach(file => {
-    console.log(file);
+    console.log('found file: ', file);
 });
