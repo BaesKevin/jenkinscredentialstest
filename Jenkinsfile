@@ -3,20 +3,27 @@ node {
     //agent { docker {image 'node:6.3'}}
     // agent any
 
-    stage('run') {
+    def PARENT_FOLDER
+
+    stage('checkout') {
+		checkout scm
+	}
+
+    stage('build') {
         withCredentials([file(credentialsId: 'dev_gcal_creds', variable: 'MY_SECRET_PATH')]) {
-            // def parts = "${MY_SECRET_PATH}".split('/');
-            // echo parts
-            // def path = parts[0]
-            // echo path
-            env.PARENT_FOLDER = sh(
+            PARENT_FOLDER = sh(
                 script: "echo ${MY_SECRET_PATH} | rev | cut -d'/' -f 2 | rev",
                 returnStdOut: true
             )
             echo "${PARENT_FOLDER}"
-            sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -v ${MY_SECRET_PATH}:/app/secrets secretfiletest"
-        }    
+            
+        }        
+    }
+
+
+    stage('run') {
+        sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
+        sh "docker run --rm -v ${MY_SECRET_PATH}:/app/secrets secretfiletest"
     }
     
 
