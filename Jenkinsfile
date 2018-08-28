@@ -11,7 +11,6 @@ node {
             // echo path
             sh "docker build -f production_dockerfile -t secretfiletest ."
             sh "docker run --rm -e PARENT_PATH=${MY_SECRET_PATH} -v ${MY_SECRET_PATH}:/app/secrets secretfiletest"
-            sh "docker rm secretfiletest"
         }    
     }
     
