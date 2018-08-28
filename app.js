@@ -16,10 +16,7 @@ const path = require('path');
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
 
-const content = fs.readFileSync('/app/secretfile.json');
-console.log(content);
-
-// fs.readFile(`/app/secrets`, (err, data) => {
-//     if (err) throw err;
-//     console.log(data);
-//   });
+fs.readFile(`/app/secretfile.json`, (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
