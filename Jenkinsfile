@@ -13,8 +13,7 @@ pipeline{
         stage('run') {
             steps {
                 sh 'docker build -f production_dockerfile -t secretfiletest .'
-                sh 'docker run -v ${MY_SECRET_PATH}:${WORKSPACE}/secrets secretfiletest'
-                sh 'ls -l'
+                sh 'docker run -v ${MY_SECRET_PATH}:/app/secrets secretfiletest'
             }
         }
     }

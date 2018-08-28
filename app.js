@@ -13,6 +13,6 @@ console.log(__dirname);
 // console.log('file contents: ' + file);
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
-fs.readdirSync('../secrets').forEach(file => {
+fs.readdirSync('/app/secrets').forEach(file => {
     console.log(file);
 });
