@@ -19,7 +19,7 @@ const path = require('path');
 fs.readdirSync('/app').forEach(file => {
     console.log('file: ', file);
 });
-// fs.readFile(`${process.env.PARENT_PATH}/service_account_credentials.json`, (err, data) => {
-//     if (err) throw err;
-//     console.log(data);
-//   });
+fs.readFile(`/app/secrets`, (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
