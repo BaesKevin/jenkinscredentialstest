@@ -16,7 +16,7 @@ const path = require('path');
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
 
-fs.readFile(`/app/secretfile.json`, (err, data) => {
+fs.readFile(`/app/secretfile.json`, {encoding: 'utf-8'}, (err, data) => {
     if (err) throw err;
     console.log(data);
   });
