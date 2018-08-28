@@ -16,6 +16,9 @@ console.log(process.env.PARENT_PATH);
 // const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
 // console.log(pathToSecretFile);
 
-fs.readdirSync('/app/secrets').forEach(file => {
-    console.log('found file: ', file);
-});
+fs.readFileSync('/app/secrets/service_account_-credentials.json')
+
+fs.readFile('/app/secrets/service_account_credentials.json', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
