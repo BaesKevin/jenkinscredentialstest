@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'node app.js'
+                sh 'docker run -e MY_SECRET_PATH=${MY_SECRET_PATH} -f production_dockerfile .'
             }
         }
     }
