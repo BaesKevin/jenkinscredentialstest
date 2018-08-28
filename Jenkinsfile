@@ -1,4 +1,4 @@
-pipeline{
+node{
     // tell jenkins to run the pipeline inside a docker container
     //agent { docker {image 'node:6.3'}}
     agent any
