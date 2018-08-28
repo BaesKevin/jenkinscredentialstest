@@ -1,3 +1,7 @@
 Jenkins setupd
 - install recommended plugins
 - install nodejs plugin
+
+Credentials:
+- add credentials file with id
+- set credentials file path to environment in Jenkinsfile 
