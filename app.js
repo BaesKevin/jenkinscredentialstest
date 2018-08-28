@@ -7,6 +7,7 @@ const path = require('path');
 
 // console.log(process.env.PARENT_PATH);
 console.log(__dirname);
+console.log(process.env.PARENT_PATH);
 const path = process.env.PARENT_PATH.split('').join(' ');
 console.log(path);
 // console.log(process.env.MY_SECRET_PATH);
