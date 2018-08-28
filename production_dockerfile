@@ -1,4 +1,5 @@
 FROM node
 WORKDIR /app
 COPY . /app
+RUN pwd
 CMD ["node", "app.js"]
