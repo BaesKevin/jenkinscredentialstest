@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'node app.js'
+                sh 'npm config ls'
             }
         }
     }
