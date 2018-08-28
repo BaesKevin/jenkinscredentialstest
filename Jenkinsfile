@@ -1,5 +1,7 @@
 pipeline{
-    agent { docker {image 'node:6.3'}}
+    // tell jenkins to run the pipeline inside a docker container
+    //agent { docker {image 'node:6.3'}}
+    agent any
 
     tools {nodejs "node"}
 
@@ -10,7 +12,7 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'node app.js'
+                sh 'docker ps'
             }
         }
     }
