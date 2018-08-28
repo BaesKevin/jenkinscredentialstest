@@ -1,5 +1,5 @@
 pipeline{
-    agent { docker {image 'node:6.3'}}
+    agent any
 
     tools {nodejs "node"}
 
@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('run') {
             steps {
-                sh 'docker run -e MY_SECRET_PATH=${MY_SECRET_PATH} -f production_dockerfile .'
+                sh 'node app.js'
             }
         }
     }
