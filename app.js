@@ -3,5 +3,5 @@
 const http = require('http');
 const fs = require('fs');
 
-console.log(process.env);
-console.log(process.env.MY_SECRET);
+const secret = process.env.MY_SECRET;
+console.log('This is the secret: ' + secret);
