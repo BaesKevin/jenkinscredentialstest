@@ -11,8 +11,8 @@ console.log(__dirname);
 // console.log(process.env.MY_SECRET_PATH);
 
 // console.log('file contents: ' + file);
-const pathToSecretFile = path.join(__dirname, 'secrets');
-console.log(pathToSecretFile);
-fs.readdirSync(pathToSecretFile).forEach(file => {
+// const pathToSecretFile = path.join(__dirname, 'app', 'secrets');
+// console.log(pathToSecretFile);
+fs.readdirSync('../secrets').forEach(file => {
     console.log(file);
 });
