@@ -12,6 +12,9 @@ pipeline{
     stages {
         stage('run') {
             steps {
+                File file = new File('${MY_SECRET_PATH}');
+                def parentPath = file.getParentFile().getName();
+                echo parentPath;
                 sh 'docker build -f production_dockerfile -t secretfiletest .'
                 sh 'docker run -v ${MY_SECRET_PATH}:/app/secrets secretfiletest'
             }
