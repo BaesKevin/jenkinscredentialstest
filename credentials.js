@@ -57,6 +57,14 @@ function createCalendarConfig() {
     template.token_uri = process.env.GCAL_TOKEN_URI;
     template.auth_provider_x509_cert_url = process.env.GCAL_AUTH_PROVIDEER_X509_CERT_URL;
     template.client_x509_cert_url = process.env.GCAL_CLIENT_X509_CERT_URL;
+
+    for(key in template){
+        if(template.hasOwnProperty(key)){
+            if(template[key] === undefined){
+                console.log(key + ' is not defined');
+            }
+        }
+    }
     
     return template;
 }
