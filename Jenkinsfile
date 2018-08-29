@@ -13,7 +13,7 @@ node {
                 string(credentialsId: 'GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
             ]
         ) {
-            sh "docker volumes create meetingroomplannersecrets"
+            sh "docker volume create meetingroomplannersecrets"
             sh "echo '{\"key\":\"thisisthenewvalue\"}' > /var/lib/docker/volumes/meetingroomplannersecrets/_data/secretfile.json"
             sh "cat /var/lib/docker/volumes/meetingroomplannersecrets/_data/secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ." 
