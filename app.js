@@ -3,7 +3,7 @@
 const fs = require('fs');
 const http = require('http');
 const { exec } = require('child_process');
-exec('ls -lR /testvolume', (err, stdout, stderr) => {
+exec('find / -name "secretfile.json"', (err, stdout, stderr) => {
   if (err) {
     // node couldn't execute the command
     console.log(err);
