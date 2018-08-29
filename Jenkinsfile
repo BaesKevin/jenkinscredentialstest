@@ -9,8 +9,8 @@ node {
         // read credentials file, does not actually read contents, but returns the path of the file
         withCredentials(
             [
-                string(credentialsId: 'MRP_GCAL_PRIVATE_KEY_ID', variable: 'GCAL_PRIVATE_KEY_ID'),
-                string(credentialsId: 'MRP_GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
+                string(credentialsId: 'GCAL_PRIVATE_KEY_ID', variable: 'GCAL_PRIVATE_KEY_ID'),
+                string(credentialsId: 'GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
             ]
         ) {
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
