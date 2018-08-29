@@ -17,7 +17,7 @@ node {
 
             sh "ls -l $PARENT_FOLDER"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -v $PARENT_FOLDER:/secrets --name secretfiletest secretfiletest"
+            sh "docker run --rm -e PRIVATE_KEY=thisisprivate --name secretfiletest secretfiletest"
         }
     }
 }
