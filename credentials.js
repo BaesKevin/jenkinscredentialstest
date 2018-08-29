@@ -18,21 +18,21 @@ const http = require('http');
 //       // node couldn't execute the command
 //       return;
 //     }
-  
+
 //     // the *entire* stdout and stderr (buffered)
 //     console.log(`whoami: ${stdout}`);
 //   });
-  
+
 //   exec('ls -l /secretfilestash', (err, stdout, stderr) => {
 //     if (err) {
 //       // node couldn't execute the command
 //       return;
 //     }
-  
+
 //     // the *entire* stdout and stderr (buffered)
 //     console.log(`secret file stash: ${stdout}`);
 //   });
-  
+
 function createCalendarConfig() {
     const template = {
         type: "service_account",
@@ -58,23 +58,32 @@ function createCalendarConfig() {
     template.auth_provider_x509_cert_url = process.env.GCAL_AUTH_PROVIDEER_X509_CERT_URL;
     template.client_x509_cert_url = process.env.GCAL_CLIENT_X509_CERT_URL;
 
-    for(let key in template){
-        if(template.hasOwnProperty(key)){
-            if(template[key] === undefined){
-                console.log(key + ' is not defined');
-            }
-        }
+    if (isAnyKeyUndefined) {
+        console.log('Not all required environment variables found');
     }
-    
+
     return template;
 }
 
+function isAnyKeyUndefined(config) {
+    let foundUndefinedKey = false;
+    for (let key in template) {
+        if (template.hasOwnProperty(key)) {
+            if (template[key] === undefined) {
+                console.log(key + ' is not defined');
+                foundUndefinedKey = true;
+            }
+        }
+    }
 
-function writeConfig(calendarConfig, path){
+    return !foundUndefinedKey;
+}
+
+function writeConfig(calendarConfig, path) {
     fs.writeFileSync(path, JSON.stringify(calendarConfig), 'utf8');
 }
 
-function readConfig(path, cb){
+function readConfig(path, cb) {
     fs.readFile(path, 'utf8', cb);
 }
 
@@ -83,7 +92,7 @@ const credsPath = 'service_account_credentials.json'
 writeConfig(calendarConfig, credsPath);
 
 readConfig(credsPath, (err, content) => {
-    if(err) console.log(err);
+    if (err) console.log(err);
     console.log(content);
 });
 

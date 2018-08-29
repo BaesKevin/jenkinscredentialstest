@@ -16,6 +16,7 @@ node {
             sh "mkdir -p /meetingroomplannersecrets"
             sh "whoami"
             sh "chmod 777 /meetingroomplannersecrets"
+            sh "chmod 777 /meetingroomplannersecrets/secretfile.json"
             sh "echo '{\"key\":\"thisisthenewvalue\"}' > /meetingroomplannersecrets/secretfile.json"
             sh "docker rm -f secretfiletest || true"
             sh "cat /meetingroomplannersecrets/secretfile.json"
