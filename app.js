@@ -35,17 +35,6 @@ exec('find / -name "secretfile.json"', (err, stdout, stderr) => {
 //     return template;
 // }
 
-// const config = createCalendarConfig();
-
-// fs.writeFile('service_account_credentials.json', JSON.stringify(config), 'utf8', (err) => {
-//     if (err) console.log(err);
-// }); // write it back 
-
-// fs.readFile('service_account_credentials.json', 'utf8', (err, data) => {
-//     if (err) console.log(err);
-//     console.log(data);
-// })
-
 const requestHandler = (request, response) => {
     response.end("Hello world");
 
