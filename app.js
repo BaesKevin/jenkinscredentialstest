@@ -57,6 +57,6 @@ fs.readFile('/mountedtestvolume/secretfile.json', 'utf8', (err, data) => {
     console.log(data);
 });
 
-server.listen(8080,()=>{
-	console.log("listening");
-});
+// server.listen(8080,()=>{
+// 	console.log("listening");
+// });

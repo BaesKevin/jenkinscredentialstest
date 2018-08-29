@@ -15,6 +15,7 @@ node {
         ) {
             sh "mkdir -p testvolume"
             sh "echo '{\"key\":\"value\"}' > testvolume/secretile.json"
+            sh "docker rm -f secretfiletest || true"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
             sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v ./testvolume:/mountedtestvolume --name secretfiletest secretfiletest"
             sh "rm /testvolume/secretile.json"
