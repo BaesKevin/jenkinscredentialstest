@@ -9,12 +9,12 @@ node {
         // read credentials file, does not actually read contents, but returns the path of the file
         withCredentials(
             [
-                string(credentialsId: 'meetingroomplanner_gcal_private_key_id', variable: 'MY_SECRET_PATH'),
-                string(credentialsId: 'CALENDAR_ID', variable: 'CALENDAR_ID')
-            ]) {
-            sh "${CALENDAR_ID}"
+                string(credentialsId: 'MRP_GCAL_PRIVATE_KEY_ID', variable: 'GCAL_PRIVATE_KEY_ID'),
+                string(credentialsId: 'MRP_GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
+            ]
+        ) {
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -e PRIVATE_KEY=$MY_SECRET_PATH --name secretfiletest secretfiletest"
+            sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID --name secretfiletest secretfiletest"
         }
     }
 }
