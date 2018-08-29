@@ -7,7 +7,12 @@ node {
 
     stage('build') {
         // read credentials file, does not actually read contents, but returns the path of the file
-        withCredentials([string(credentialsId: 'meetingroomplanner_gcal_private_key_id', variable: 'MY_SECRET_PATH')]) {
+        withCredentials(
+            [
+                string(credentialsId: 'meetingroomplanner_gcal_private_key_id', variable: 'MY_SECRET_PATH'),
+                string(credentialsId: 'CALENDAR_ID', variable: 'CALENDAR_ID')
+            ]) {
+            sh "${CALENDAR_ID}"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
             sh "docker run --rm -e PRIVATE_KEY=$MY_SECRET_PATH --name secretfiletest secretfiletest"
         }
