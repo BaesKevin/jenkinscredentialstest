@@ -16,8 +16,7 @@ node {
             sh "mkdir -p /meetingroomplannersecrets"
             sh "echo '{\"key\":\"thisisthenewvalue\"}' > /meetingroomplannersecrets/secretfile.json"
             sh "docker rm -f secretfiletest || true"
-            sh "ls -la /meetingroomplannersecrets"
-            sh "docker volume ls"
+            sh "cat /meetingroomplannersecrets/secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
             // mounting like this apparently puts the volume under /app/testvolume
             sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v /meetingroomplannersecrets:/testvolume --name secretfiletest secretfiletest"
