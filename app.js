@@ -53,7 +53,7 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler);
 
-fs.readFile('/testvolume/secretfile.json', 'utf8', (err, data) => {
+fs.readFile('/app/testvolume/secretfile.json', 'utf8', (err, data) => {
     if (err) console.log(err);
     console.log(data);
 });
