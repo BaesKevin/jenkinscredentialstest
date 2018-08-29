@@ -8,7 +8,7 @@ node {
     stage('build with folder to mount already created') {
             sh "docker rm -f secretfiletest || true"
             sh "docker build --no-cache -f simpledockerfile -t secretfiletest ."
-            sh "docker run -v /meetingroomplannersecrets:/meetingroomplannersecrets --name secretfiletest secretfiletest"
+            sh "docker run -v /meetingroomplannersecrets:/containersecrets --name secretfiletest secretfiletest"
     }
 
     // stage('build') {
