@@ -13,14 +13,12 @@ node {
                 string(credentialsId: 'GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
             ]
         ) {
-            sh "mkdir -p /meetingroomplannersecrets"
-            sh "echo '{\"key\":\"thisisthenewvalue\"}' > /meetingroomplannersecrets/secretfile.json"
-            sh "docker rm -f secretfiletest || true"
-            sh "cat /meetingroomplannersecrets/secretfile.json"
-            sh "ls -l  /meetingroomplannersecrets"
+            sh "docker volumes create meetingroomplannersecrets"
+            sh "echo '{\"key\":\"thisisthenewvalue\"}' > /var/lib/docker/volumes/meetingroomplannersecrets/_data/secretfile.json"
+            sh "cat /var/lib/docker/volumes/meetingroomplannersecrets/_data/secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ." 
             // mounting like this apparently puts the volume under /app/testvolume
-            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v /meetingroomplannersecrets:/app/meetingroomplannersecrets --name secretfiletest secretfiletest"
+            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v meetingroomplannersecrets:/secrets --name secretfiletest secretfiletest"
         }
     }
 }
