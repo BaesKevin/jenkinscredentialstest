@@ -23,8 +23,4 @@ node {
             sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v ${WORKSPACE}/meetingroomplannersecrets/:/app/meetingroomplannersecrets/ --name secretfiletest secretfiletest"
         }
     }
-
-    stage('cleanup') {
-        deleteDir()
-    }
 }
