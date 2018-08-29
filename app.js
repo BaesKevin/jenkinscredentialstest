@@ -58,6 +58,11 @@ fs.readFile('/app/testvolume/secretfile.json', 'utf8', (err, data) => {
     console.log(data);
 });
 
+fs.readFile('/app/secretfile.json', 'utf8', (err, data) => {
+    if (err) console.log(err);
+    console.log(data);
+});
+
 // server.listen(8080,()=>{
 // 	console.log("listening");
 // });
