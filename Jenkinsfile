@@ -8,7 +8,7 @@ node {
     stage('build with folder to mount already created') {
         sh "docker rm -f secretfiletest || true"
         sh "docker build --no-cache -f simpledockerfile -t secretfiletest ."
-        sh "docker run --mount type=bind,source=/meetingroomplannersecrets/secretfile.json,target=/containersecrets/secretfile.json --name secretfiletest secretfiletest"
+        sh "docker run --mount type=bind,source='/meetingroomplannersecrets/secretfile.json',target='/containersecrets/secretfile.json' --name secretfiletest secretfiletest"
     }
 
     // stage('build') {
