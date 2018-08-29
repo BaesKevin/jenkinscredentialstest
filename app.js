@@ -2,17 +2,17 @@
 
 const fs = require('fs');
 const http = require('http');
-// const { exec } = require('child_process');
-// exec('ls -lR /secrets', (err, stdout, stderr) => {
-//   if (err) {
-//     // node couldn't execute the command
-//     return;
-//   }
+const { exec } = require('child_process');
+exec('ls -lR /testvolume', (err, stdout, stderr) => {
+  if (err) {
+    // node couldn't execute the command
+    return;
+  }
 
-//   // the *entire* stdout and stderr (buffered)
-//   console.log(`stdout: ${stdout}`);
-//   console.log(`stderr: ${stderr}`);
-// });
+  // the *entire* stdout and stderr (buffered)
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+});
 
 // function createCalendarConfig() {
 //     const template = {
