@@ -44,7 +44,7 @@ node {
             sh "ls ${PARENT_FOLDER}"
             sh "docker rm -f secretfiletest || true"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID --mount type=bind,source=${PARENT_FOLDER},target=/secretfilestash --name secretfiletest secretfiletest"
+            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v ${PARENT_FOLDER}:/secretfilestash --name secretfiletest secretfiletest"
             sh "docker inspect -f {{.Mounts}} secretfiletest"
         }
     }
