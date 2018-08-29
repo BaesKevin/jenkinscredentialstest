@@ -14,7 +14,7 @@ node {
             ]
         ) {
             sh "mkdir -p /meetingroomplannersecrets"
-            sh "echo '{\"key\":\"thisisthevalue\"}' > /meetingroomplannersecrets/secretfile.json"
+            sh "echo '{\"key\":\"thisisthenewvalue\"}' > /meetingroomplannersecrets/secretfile.json"
             sh "docker rm -f secretfiletest || true"
             sh "ls -la /meetingroomplannersecrets"
             sh "docker volume ls"
