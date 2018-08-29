@@ -72,7 +72,7 @@ function readConfig(path, cb){
 
 const calendarConfig = createCalendarConfig();
 const credsPath = 'service_account_credentials.json'
-writeConfig(calendarConfig, path);
+writeConfig(calendarConfig, credsPath);
 
 readConfig(credsPath, (err, content) => {
     if(err) console.log(err);
