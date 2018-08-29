@@ -17,6 +17,7 @@ node {
             sh "echo '{\"key\":\"thisisthenewvalue\"}' > /meetingroomplannersecrets/secretfile.json"
             sh "docker rm -f secretfiletest || true"
             sh "cat /meetingroomplannersecrets/secretfile.json"
+            sh "ls -l / | grep meetingroomplannersecrets"
             sh "ls -l  /meetingroomplannersecrets/secretfile.json"
             sh "cat /meetingroomplannersecrets/secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ." 
