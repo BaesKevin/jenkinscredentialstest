@@ -1,9 +1,14 @@
 "use strict"
 
 const fs = require('fs');
+const { exec } = require('child_process');
+exec('ls -lR /secrets', (err, stdout, stderr) => {
+  if (err) {
+    // node couldn't execute the command
+    return;
+  }
 
-fs.readdirSync('/secrets').forEach(f=>console.log(f));
-fs.readFile(`/secrets/secretfile.json`, {encoding: 'utf-8'}, (err, data) => {
-    if (err) throw err;
-    console.log(data);
+  // the *entire* stdout and stderr (buffered)
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
 });
