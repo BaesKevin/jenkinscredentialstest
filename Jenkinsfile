@@ -13,8 +13,12 @@ node {
                 string(credentialsId: 'GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
             ]
         ) {
+            sh "mkdir -p ${WORKSPACE}/testvolume"
+            sh "cat 'content' > ${WORKSPACE}/testvolume/secretile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
-            sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID --name secretfiletest secretfiletest"
+            sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v ${WORKSPACE}/testvolume:/mountedtestvolume --name secretfiletest secretfiletest"
+            sh "rm /testvolume/secretile.json"
+            sh "rmdir /testvolume"
         }
     }
 }
