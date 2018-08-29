@@ -24,7 +24,7 @@ node {
             sh "cat /meetingroomplannersecrets/secretfile.json"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ." 
             // mounting like this apparently puts the volume under /app/testvolume
-            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID --mount type=bind,source=/meetingroomplannersecrets,target=/meetingroomplannersecrets --name secretfiletest secretfiletest"
+            sh "docker run -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v /meetingroomplannersecrets:/meetingroomplannersecrets --name secretfiletest secretfiletest"
             sh "docker inspect -f {{.Mounts}} secretfiletest"
         }
     }

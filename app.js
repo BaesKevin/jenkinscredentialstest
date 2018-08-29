@@ -60,10 +60,10 @@ exec('whoami', (err, stdout, stderr) => {
 
 // const server = http.createServer(requestHandler);
 
-// fs.readFile('/app/meetingroomplannersecrets/', 'utf8', (err, data) => {
-//     if (err) console.log(err);
-//     console.log(data);
-// });
+fs.readFile('/meetingroomplannersecrets/secretfile.json', 'utf8', (err, data) => {
+    if (err) console.log(err);
+    console.log(data);
+});
 
 // server.listen(8080,()=>{
 // 	console.log("listening");
