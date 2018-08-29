@@ -11,10 +11,18 @@ exec('find / -name "secretfile.json"', (err, stdout, stderr) => {
   }
 
   // the *entire* stdout and stderr (buffered)
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
+  console.log(`secretfile locations: ${stdout}`);
 });
-
+exec('whoami', (err, stdout, stderr) => {
+    if (err) {
+      // node couldn't execute the command
+      return;
+    }
+  
+    // the *entire* stdout and stderr (buffered)
+    console.log(`whoami: ${stdout}`);
+  });
+  
 // function createCalendarConfig() {
 //     const template = {
 //         type: "service_account",
