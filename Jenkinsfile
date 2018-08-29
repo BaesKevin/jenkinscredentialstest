@@ -13,14 +13,14 @@ node {
                 string(credentialsId: 'GCAL_PRIVATE_KEY', variable: 'GCAL_PRIVATE_KEY')
             ]
         ) {
-            sh "mkdir -p testvolume"
-            sh "echo '{\"key\":\"thisisthevalue\"}' > testvolume/secretfile.json"
+            sh "mkdir -p /meetingroomplannersecrets"
+            sh "echo '{\"key\":\"thisisthevalue\"}' > /meetingroomplannersecrets/secretfile.json"
             sh "docker rm -f secretfiletest || true"
-            sh "ls -la ${WORKSPACE}/testvolume"
+            sh "ls -la /meetingroomplannersecrets"
             sh "docker volume ls"
             sh "docker build --no-cache -f production_dockerfile -t secretfiletest ."
             // mounting like this apparently puts the volume under /app/testvolume
-            sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v ${WORKSPACE}/testvolume:/testvolume --name secretfiletest secretfiletest"
+            sh "docker run --rm -e GCAL_PRIVATE_KEY=$GCAL_PRIVATE_KEY -e GCAL_PRIVATE_KEY_ID=$GCAL_PRIVATE_KEY_ID -v /meetingroomplannersecrets:/testvolume --name secretfiletest secretfiletest"
         }
     }
 }
