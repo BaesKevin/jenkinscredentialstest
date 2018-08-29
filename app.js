@@ -23,6 +23,16 @@ exec('whoami', (err, stdout, stderr) => {
     console.log(`whoami: ${stdout}`);
   });
   
+  exec('ls -l /secretfilestash', (err, stdout, stderr) => {
+    if (err) {
+      // node couldn't execute the command
+      return;
+    }
+  
+    // the *entire* stdout and stderr (buffered)
+    console.log(`secret file stash: ${stdout}`);
+  });
+  
 // function createCalendarConfig() {
 //     const template = {
 //         type: "service_account",
@@ -43,12 +53,12 @@ exec('whoami', (err, stdout, stderr) => {
 //     return template;
 // }
 
-const requestHandler = (request, response) => {
-    response.end("Hello world");
+// const requestHandler = (request, response) => {
+//     response.end("Hello world");
 
-};
+// };
 
-const server = http.createServer(requestHandler);
+// const server = http.createServer(requestHandler);
 
 // fs.readFile('/app/meetingroomplannersecrets/', 'utf8', (err, data) => {
 //     if (err) console.log(err);
